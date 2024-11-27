@@ -8,6 +8,7 @@
 #. /etc/X11/Xsession
 
 # Restore color gamma and wallpaper from previous login
+
 wal -R
 
 exec bspwm

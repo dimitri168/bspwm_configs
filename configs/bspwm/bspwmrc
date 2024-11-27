@@ -14,7 +14,7 @@ pgrep -x picom > /dev/null || picom --daemon &
 
 numlockx on &
 
-# Set 75Hz screen refresh rate
+# Set screen refresh rate
 $HOME/.screenlayout/screen.sh &
 
 localectl --no-convert set-x11-keymap us,ru "" "" grp:caps_toggle &
