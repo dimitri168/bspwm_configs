@@ -7,8 +7,7 @@
 # invoke global X session script
 #. /etc/X11/Xsession
 
-picom &
-#redshift &
-nitrogen --restore &
+# Restore color gamma and wallpaper from previous login
+wal -R
 
 exec bspwm
