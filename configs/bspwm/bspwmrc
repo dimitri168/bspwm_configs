@@ -1,0 +1,78 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x blueman-applet > /dev/null || blueman-applet &
+pgrep -x dropbox > /dev/null || dropbox &
+pgrep -x tapper --layouter=xkb > /dev/null || tapper --layouter=xkb &
+# Screenshots
+pgrep -x flameshot > /dev/null || flameshot &
+# Notifications
+pgrep -x dunst > /dev/null || dunst &
+# Compositor
+pgrep -x picom > /dev/null || picom --daemon &
+
+
+numlockx on &
+
+# Set 75Hz screen refresh rate
+$HOME/.screenlayout/screen.sh &
+
+localectl --no-convert set-x11-keymap us,ru "" "" grp:caps_toggle &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+xsetroot -cursor_name left_ptr &
+$HOME/.config/polybar/launch.sh
+
+# Screen poweroff and standby
+xset s 600 900 dpms 900 900 900 &
+xss-lock -l -- xsecurelock &
+
+# Location agent
+/usr/lib/geoclue-2.0/demos/agent &
+
+bspc monitor -d 1 2 3 4 5 6
+bspc config border_width         1
+bspc config window_gap           3
+
+# source the colors.
+. "${HOME}/.cache/wal/colors.sh"
+
+# Set the border colors.
+bspc config normal_border_color "$color1"
+bspc config active_border_color "$color2"
+bspc config focused_border_color "$color15"
+# Use the line below if you are on bspwm >= 0.9.4
+bspc config presel_feedback_color "$color1"
+# Use the line below if you are on bspwm < 0.9.4
+#bspc config presel_border_color "$color1"
+
+# Border colors
+#bspc config normal_border_color "#282A2E"
+#bspc config focused_border_color "#F0C674"
+bspc config urgent_border_color "#A54242"
+bspc config presel_border_color "#26E2FF"
+
+bspc config split_ratio           0.55
+bspc config borderless_monocle    true
+bspc config gapless_monocle       true
+bspc config focus_follows_pointer true
+
+bspc rule -a "FeatherNotes" desktop='^4' state=floating follow=on
+bspc rule -a "mpv" state=floating follow=on
+bspc rule -a "SpeedCrunch" state=floating follow=on
+bspc rule -a "qps" state=floating follow=on
+bspc rule -a "RSS Guard" desktop='^4' follow=on
+bspc rule -a "qutebrowser" follow=on split_ratio=0.45
+bspc rule -a "firefox" desktop='^2' 
+bspc rule -a "Soffice" desktop='^4' follow=on
+bspc rule -a "Notesnook" desktop='^4' follow=on
+bspc rule -a "Gimp-2.10" desktop='^4' follow=on
+bspc rule -a "Thunar" desktop='^3' follow=on
+bspc rule -a "strawberry" desktop='^5' follow=on
+bspc rule -a "TelegramDesktop" desktop='^6' follow=on 
+
+XSECURELOCK_DIM_COLOR="#1a1b26" \
+	XSECURELOCK_PASSWORD_PROMPT=emoticon \
+	XSECURELOCK_SHOW_HOSTNAME=0 \
+	XSECURELOCK_SHOW_USERNAME=0 \
+	XSECURELOCK_FONT="Hack Nerd Font Mono" \
+	xss-lock -n /usr/lib/xsecurelock/saver_xscreensaver -l -- xsecurelock
