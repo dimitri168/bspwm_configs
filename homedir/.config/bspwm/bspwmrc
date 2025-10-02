@@ -3,25 +3,23 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x blueman-applet > /dev/null || blueman-applet &
 pgrep -x dropbox > /dev/null || dropbox &
+
 # Layout switcher
 pgrep -x tapper --layouter=xkb > /dev/null || tapper --layouter=xkb &
 # Screenshots
 pgrep -x flameshot > /dev/null || flameshot &
 # Weather
 pgrep -x meteo-qt > /dev/null || meteo-qt &
-# Notifications
-#pgrep -x dunst > /dev/null || dunst &
 # Compositor
 pgrep -x picom > /dev/null || picom --daemon &
-# NetworkManager applet
-#pgrep -x nm-applet > /dev/null || nm-applet &
 # Clipboard Menu
 pgrep -x clipmenud > /dev/null || clipmenud &
+# Location agent
+/usr/lib/geoclue-2.0/demos/agent &
 
 numlockx on &
 
 localectl --no-convert set-x11-keymap us,ru pc105 "" grp:caps_toggle &
-#setxkbmap -model pc105 -layout us,ru -option grp:caps_toggle &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
@@ -34,24 +32,19 @@ $HOME/.config/polybar/launch.sh
 xset s 600 900 dpms 900 900 900 &
 xss-lock -l -- xsecurelock &
 
-# Location agent
-/usr/lib/geoclue-2.0/demos/agent &
+# source the colors by wal.
+. "${HOME}/.cache/wal/colors.sh"
+
 
 bspc monitor -d 1 2 3 4 5 6
 bspc config border_width         1
 bspc config window_gap           1
 
-# source the colors.
-. "${HOME}/.cache/wal/colors.sh"
-
 # Set the border colors.
 bspc config normal_border_color "$color1"
 bspc config active_border_color "$color2"
 bspc config focused_border_color "$color15"
-# Use the line below if you are on bspwm >= 0.9.4
 bspc config presel_feedback_color "$color1"
-# Use the line below if you are on bspwm < 0.9.4
-#bspc config presel_border_color "$color1"
 
 # Border colors
 #bspc config normal_border_color "#282A2E"
