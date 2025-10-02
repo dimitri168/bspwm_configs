@@ -1,2 +1,0 @@
-[ 31.10.2024 12:05:55.360 parse_config_libconfig ERROR ] shadow-exclude-reg is deprecated. Please use clip-shadow-above for more flexible shadow exclusion.
-[ 31.10.2024 12:05:55.360 main FATAL ERROR ] Failed to create new session.

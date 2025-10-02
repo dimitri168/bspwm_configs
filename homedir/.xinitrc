@@ -7,7 +7,12 @@
 # invoke global X session script
 #. /etc/X11/Xsession
 
+# Set 75Hz screen refresh rate
+$HOME/.screenlayout/screen.sh &
+
 # Restore color gamma and wallpaper from previous login
 wal -R
+
+nm-applet &
 
 exec bspwm
