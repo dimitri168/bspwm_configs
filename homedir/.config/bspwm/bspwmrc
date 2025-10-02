@@ -18,12 +18,11 @@ pgrep -x clipmenud > /dev/null || clipmenud &
 /usr/lib/geoclue-2.0/demos/agent &
 
 numlockx on &
+xsetroot -cursor_name left_ptr &1
 
 localectl --no-convert set-x11-keymap us,ru pc105 "" grp:caps_toggle &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-xsetroot -cursor_name left_ptr &1
 
 # Polybar launch
 $HOME/.config/polybar/launch.sh
