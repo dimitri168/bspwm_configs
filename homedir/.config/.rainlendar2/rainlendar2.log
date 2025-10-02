@@ -1,0 +1,95 @@
+16:52:23: [0:00:00.006] Rainlendar 2.21.3
+16:52:23: Warning: Resource files must have same version number.
+16:52:23: Warning: Resource files must have same version number.
+16:52:23: Warning: Resource files must have same version number.
+16:52:23: Warning: Resource files must have same version number.
+16:52:23: Warning: Resource files must have same version number.
+16:52:23: Error: can't open file '/home/dm/.config/.rainlendar2/license.r2lic' (error 2: No such file or directory)
+16:52:23: [0:00:00.064] Category file: /home/dm/.config/.rainlendar2/categories.ini
+16:52:23: [0:00:00.064] Alarms file: /home/dm/.config/.rainlendar2/alarms.ini
+16:52:23: [0:00:00.064] Task state file: /home/dm/.config/.rainlendar2/taskstates.ini
+16:52:23: [0:00:00.064] Windows file: /home/dm/.config/.rainlendar2/windows.ini
+16:52:23: [0:00:00.065] Reading skin /opt/rainlendar2/skins/Shadow4.r2skin
+16:52:23: Error: can't open file '/home/dm/.config/.rainlendar2/license.r2lic' (error 2: Нет такого файла или каталога)
+16:52:23: [0:00:00.216] Local Time: Ticks: 1727437943 Date: 27-09-2024 Time: 16:52:23 DST: No
+16:52:23: [0:00:00.216]   UTC Time: Ticks: 1727437943 Date: 27-09-2024 Time: 11:52:23 DST: No
+16:52:23: [0:00:00.216] Paths:
+16:52:23: [0:00:00.216] 	Program: /opt/rainlendar2/
+16:52:23: [0:00:00.216] 	Resources: /opt/rainlendar2/resources/
+16:52:23: [0:00:00.216] 	Skins (program): /opt/rainlendar2/skins/
+16:52:23: [0:00:00.216] 	Skins (config): /home/dm/.config/.rainlendar2/skins/
+16:52:23: [0:00:00.216] 	Plugins: /opt/rainlendar2/plugins/
+16:52:23: [0:00:00.216] 	Locale (program): /opt/rainlendar2/locale/
+16:52:23: [0:00:00.216] 	Locale (config): /home/dm/.config/.rainlendar2/locale/
+16:52:23: [0:00:00.216] 	Scripts (program): /opt/rainlendar2/scripts/
+16:52:23: [0:00:00.216] 	Scripts (config): /home/dm/.config/.rainlendar2/scripts/
+16:52:23: [0:00:00.216] 	Backup: /home/dm/.config/.rainlendar2/backups/
+16:52:23: [0:00:00.216] 	Config: /home/dm/.config/.rainlendar2/rainlendar2.ini
+16:52:23: [0:00:00.216] Available plugins:
+16:52:23: [0:00:00.216] 	iCalendar Format (1.15.180)
+16:52:23: Warning: iCCP: cHRM chunk does not match sRGB
+16:52:23: Warning: iCCP: cHRM chunk does not match sRGB
+16:52:23: Warning: iCCP: cHRM chunk does not match sRGB
+16:52:23: Warning: iCCP: cHRM chunk does not match sRGB
+16:52:23: Warning: iCCP: cHRM chunk does not match sRGB
+16:52:23: Error: can't open file '/home/dm/.config/.rainlendar2/Default.ics' (error 2: Нет такого файла или каталога)
+16:52:23: [0:00:00.566] WARNING: Unable to open file: /home/dm/.config/.rainlendar2/Default.ics
+16:52:23: [0:00:00.566] Created backup file "/home/dm/.config/.rainlendar2/backups/20240927-Rainlendar2Backup.zip"
+16:52:28: [0:00:04.772] WARNING: По умолчанию: The file "/home/dm/.config/.rainlendar2/Default.ics" does not exist.
+16:52:36: [0:00:12.842] Reading skin /opt/rainlendar2/skins/Savannah.r2skin
+16:52:36: [0:00:12.859] Caching skin Savannah to file: /home/dm/.config/.rainlendar2/skincache.ini
+16:52:36: [0:00:12.862] Reading skin /opt/rainlendar2/skins/Chromophore.r2skin
+16:52:36: [0:00:12.888] Caching skin Chromophore to file: /home/dm/.config/.rainlendar2/skincache.ini
+16:53:05: Warning: iCCP: too many profiles
+16:53:37: Error: can't open file '/home/dm/.config/.rainlendar2/license.r2lic' (error 2: Нет такого файла или каталога)
+16:53:37: [0:01:14.342] Category file: /home/dm/.config/.rainlendar2/categories.ini
+16:53:37: [0:01:14.342] Alarms file: /home/dm/.config/.rainlendar2/alarms.ini
+16:53:37: [0:01:14.342] Task state file: /home/dm/.config/.rainlendar2/taskstates.ini
+16:53:37: [0:01:14.342] Windows file: /home/dm/.config/.rainlendar2/windows.ini
+16:53:37: [0:01:14.343] Reading skin /opt/rainlendar2/skins/Savannah.r2skin
+16:53:37: Error: can't open file '/home/dm/.config/.rainlendar2/license.r2lic' (error 2: Нет такого файла или каталога)
+16:53:37: [0:01:14.368] Local Time: Ticks: 1727438017 Date: 27-09-2024 Time: 16:53:37 DST: No
+16:53:37: [0:01:14.368]   UTC Time: Ticks: 1727438017 Date: 27-09-2024 Time: 11:53:37 DST: No
+16:53:37: [0:01:14.368] Paths:
+16:53:37: [0:01:14.368] 	Program: /opt/rainlendar2/
+16:53:37: [0:01:14.368] 	Resources: /opt/rainlendar2/resources/
+16:53:37: [0:01:14.368] 	Skins (program): /opt/rainlendar2/skins/
+16:53:37: [0:01:14.368] 	Skins (config): /home/dm/.config/.rainlendar2/skins/
+16:53:37: [0:01:14.368] 	Plugins: /opt/rainlendar2/plugins/
+16:53:37: [0:01:14.368] 	Locale (program): /opt/rainlendar2/locale/
+16:53:37: [0:01:14.368] 	Locale (config): /home/dm/.config/.rainlendar2/locale/
+16:53:37: [0:01:14.368] 	Scripts (program): /opt/rainlendar2/scripts/
+16:53:37: [0:01:14.368] 	Scripts (config): /home/dm/.config/.rainlendar2/scripts/
+16:53:37: [0:01:14.369] 	Backup: /home/dm/.config/.rainlendar2/backups/
+16:53:37: [0:01:14.369] 	Config: /home/dm/.config/.rainlendar2/rainlendar2.ini
+16:53:37: [0:01:14.369] Available plugins:
+16:53:37: [0:01:14.369] 	iCalendar Format (1.15.180)
+16:53:37: Warning: iCCP: cHRM chunk does not match sRGB
+16:53:47: Error: can't open file '/home/dm/.config/.rainlendar2/license.r2lic' (error 2: Нет такого файла или каталога)
+16:53:47: [0:01:24.488] Category file: /home/dm/.config/.rainlendar2/categories.ini
+16:53:47: [0:01:24.488] Alarms file: /home/dm/.config/.rainlendar2/alarms.ini
+16:53:47: [0:01:24.488] Task state file: /home/dm/.config/.rainlendar2/taskstates.ini
+16:53:47: [0:01:24.488] Windows file: /home/dm/.config/.rainlendar2/windows.ini
+16:53:47: [0:01:24.489] Reading skin /opt/rainlendar2/skins/Shadow4.r2skin
+16:53:47: Error: can't open file '/home/dm/.config/.rainlendar2/license.r2lic' (error 2: Нет такого файла или каталога)
+16:53:47: [0:01:24.662] Local Time: Ticks: 1727438027 Date: 27-09-2024 Time: 16:53:47 DST: No
+16:53:47: [0:01:24.662]   UTC Time: Ticks: 1727438027 Date: 27-09-2024 Time: 11:53:47 DST: No
+16:53:47: [0:01:24.662] Paths:
+16:53:47: [0:01:24.663] 	Program: /opt/rainlendar2/
+16:53:47: [0:01:24.663] 	Resources: /opt/rainlendar2/resources/
+16:53:47: [0:01:24.663] 	Skins (program): /opt/rainlendar2/skins/
+16:53:47: [0:01:24.663] 	Skins (config): /home/dm/.config/.rainlendar2/skins/
+16:53:47: [0:01:24.663] 	Plugins: /opt/rainlendar2/plugins/
+16:53:47: [0:01:24.663] 	Locale (program): /opt/rainlendar2/locale/
+16:53:47: [0:01:24.663] 	Locale (config): /home/dm/.config/.rainlendar2/locale/
+16:53:47: [0:01:24.663] 	Scripts (program): /opt/rainlendar2/scripts/
+16:53:47: [0:01:24.663] 	Scripts (config): /home/dm/.config/.rainlendar2/scripts/
+16:53:47: [0:01:24.663] 	Backup: /home/dm/.config/.rainlendar2/backups/
+16:53:47: [0:01:24.663] 	Config: /home/dm/.config/.rainlendar2/rainlendar2.ini
+16:53:47: [0:01:24.663] Available plugins:
+16:53:47: [0:01:24.663] 	iCalendar Format (1.15.180)
+16:53:47: Warning: iCCP: cHRM chunk does not match sRGB
+16:53:47: Warning: iCCP: cHRM chunk does not match sRGB
+16:53:47: Warning: iCCP: cHRM chunk does not match sRGB
+16:53:48: Warning: iCCP: cHRM chunk does not match sRGB
+16:53:48: Warning: iCCP: cHRM chunk does not match sRGB
