@@ -32,7 +32,7 @@ $HOME/.config/polybar/launch.sh
 xset s 600 900 dpms 900 900 900 &
 xss-lock -l -- xsecurelock &
 
-# source the colors by wal.
+# source the colors.
 . "${HOME}/.cache/wal/colors.sh"
 
 
