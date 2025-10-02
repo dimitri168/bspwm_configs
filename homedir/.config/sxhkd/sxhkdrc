@@ -28,7 +28,7 @@ alt + ctrl + Delete
 
 # rofi launcher
 super + d
-	rofi -show combi -modes combi -combi-modes "window,drun" -font "Hack Bold 12"
+	rofi -show combi -modes combi -combi-modes "window,drun" -font "Hack Bold 6"
 
 # sxhkd reload config:
 super + Escape

@@ -1,6 +1,6 @@
 #! /bin/sh
 
-pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x sxhkd > /dev/null || sxhkd -c /home/dm/.config/sxhkd/sxhkdrc_rus &
 pgrep -x blueman-applet > /dev/null || blueman-applet &
 pgrep -x dropbox > /dev/null || dropbox &
 
