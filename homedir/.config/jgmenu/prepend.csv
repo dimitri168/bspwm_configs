@@ -1,6 +1,6 @@
-Keybindings,~/scripts/kblist.sh,xfce4-menueditor
-Terminal,xfce4-terminal,utilities-terminal
-Browser,firefox,firefox
-File manager,thunar,system-file-manager
-Editor,mousepad,accessories-text-editor
+Сочетания клавиш,~/scripts/kblist.sh,xfce4-menueditor
+Терминал,xfce4-terminal,utilities-terminal
+Интернет,firefox,firefox
+Файлы,thunar,system-file-manager
+Редактор,mousepad,accessories-text-editor
 ^sep()

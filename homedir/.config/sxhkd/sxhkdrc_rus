@@ -28,11 +28,13 @@ alt + ctrl + Delete
 
 # Список приложений
 super + d
-	rofi -show combi -modes combi -combi-modes "window,drun" -font "Hack Bold 12"
+	rofi -show combi -modes combi -combi-modes "window,drun" \
+	-font "Hack Bold 12" -theme glue_pro_blue
 
 # Перечитать конфигурацию sxhkd
 super + Escape
-	pkill -USR1 -x sxhkd | sxhkd -c /home/dm/.config/sxhkd/sxhkdrc_rus | notify-send -t 2000 'sxhkd' 'Reload config'
+	pkill -USR1 -x sxhkd | sxhkd -c /home/dm/.config/sxhkd/sxhkdrc_rus \
+	| notify-send -t 2000 'sxhkd' 'Reload config'
 
 # Понизить громкость
 XF86AudioLowerVolume
@@ -70,7 +72,8 @@ alt + c
         -no-show-icons \
         -theme-str '* \{ font: 10px; \}' \
         -theme-str 'listview \{ spacing: 0; \}' \
-        -theme-str 'window \{ width: 30em; \}'
+        -theme-str 'window \{ width: 30em; \}' \
+		-theme glue_pro_blue
 
 #
 # bspwm hotkeys
@@ -112,7 +115,7 @@ super + ctrl + {m,x,y,z}
 # focus/swap
 #
 
-# focus the node in the given direction
+# Переключение между окнами на рабочем столе
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
@@ -158,7 +161,7 @@ super + ctrl + {1-9}
 super + ctrl + space
 	bspc node -p cancel
 
-# Отменить резервирование на активном рабочем столе
+# Отменить всё резервирование на активном рабочем столе
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
