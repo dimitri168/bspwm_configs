@@ -73,7 +73,8 @@ alt + c
         -theme-str '* \{ font: 10px; \}' \
         -theme-str 'listview \{ spacing: 0; \}' \
         -theme-str 'window \{ width: 30em; \}' \
-		-theme glue_pro_blue
+		-theme glue_pro_blue \
+		-window-title "Clipboard"
 
 #
 # bspwm hotkeys
