@@ -1,0 +1,125 @@
+Network - WiFi
+iwctl
+station wlan0 connect linksys_media
+
+Network - Cellular modem
+mmcli -L 	# выдаст строку типа  /org/freedesktop/ModemManager1/Modem/6 [Lenovo] N5321 gw
+		# 6 - индекс модема, указываем в следующей команде
+mmcli -m 6 --simple-connect="apn=internet.beeline.kz"
+
+Русская консоль с переключением по CapsLock
+loadkeys ruwin_cplk-UTF-8
+setfont cyr-sun16
+
+Проверка режима загрузки UEFI
+ls /sys/firmware/efi/efivars
+
+Local Mirror
+Домашний сервак (сейчас не работает)
+Server = http://192.168.2.136:8080/$repo/os/$arch
+Казахстанские зеркала
+Server = https://mirror.ps.kz/archlinux/$repo/os/$arch
+Server = https://mirror.hoster.kz/archlinux/$repo/os/$arch
+
+
+Разметка диска
+cfdisk /dev/sda
+
+Форматирование
+mkfs.ext4 /dev/sda2
+mount /dev/sda2 /mnt
+
+mkfs.fat -F32 /dev/sda1
+mkdir -p /mnt/boot/efi
+mount /dev/sda1 /mnt/boot/efi
+
+Swap потом в установленной системе делаем файлом
+
+pacstrap /mnt base linux-zen linux-firmware intel-ucode
+pacstrap /mnt nano dhcpcd man-db man-pages texinfo networkmanager
+
+genfstab -U /mnt >>/mnt/etc/fstab
+
+arch-chroot /mnt
+
+Локализация - 
+/etc/vconsole.conf - KEYMAP=ruwin_cplk-UTF-8 (переключение по капсу) FONT=cyr-sun16
+/etc/locale.conf - LANG=ru_RU.UTF-8
+
+Ставим grub2
+pacman -S grub2 efibootmgr
+grub-install /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+перезагрузка
+
+Пользователи
+pacman -S xdg-user-dirs
+useradd -m -g users -G wheel -s /bin/bash MYUSERNAME
+
+YAY
+pacman -S --needed git base-devel
+mkdir ~/git; cd git
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+XORG
+pacman -S xorg xorg-server xorg-apps mesa xf86-video-intel libva-intel-driver vulkan-intel
+pacman -S xf86-input-synaptics xorg-xinit xterm xorg-xclock
+
+Звук
+
+pacman -S pulseaudio pulseaudio-bluetooth pavucontrol bluez blueman
+
+#pacman -S pipewire pipewire-pulse pipewire-alsa gst-plugin-pipewire
+#systemctl start --user pipewire-pulse.service
+
+XFCE4
+pacman -S xfce4 xfce4-goodies gvfs gvfs-smb network-manager-applet lightdm
+yay -S mugshot
+
+Lightdm (надо также прописать автозапуск через systemctl)
+/etc/lightdm/lightdm.conf
+
+[Seat:*]
+autologin-user=username
+
+groupadd -r autologin
+gpasswd -a username autologin
+
+Codecs and player
+yay -S gstreamer gstreamer-vaapi gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly
+yay -S mpv
+
+Политики
+pacman -S gnome-keyring
+
+Разное
+yay -S ncdu arc-solid-gtk-theme papirus-icon-theme p7zip mc engrampa
+yay -S firefox-esr-bin openssh ttf-hack
+yay -S dropbox
+yay -S pacman-contrib - всякие pactree, paccache (sudo systemctl enable paccache.timer для удаления кэша раз в неделю)
+
+Делаем Swap
+fallocate -l 8G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+
+Изменяем /etc/fstab
+/swapfile none swap defaults,discard 0 0
+
+Монтирование NTFS драйвером ядра (возможно какая-то хрень)
+yay -S udisks2
+В качестве обходного пути добавьте следующую опцию в секции [defaults] в файле /etc/udisks2/mount_options.conf:
+ntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc
+
+Redshift
+Вставить в /etc/geoclue/geoclue.conf
+
+url=https://location.services.mozilla.com/v1/geolocate?key=geoclue
+
+[redshift]
+allowed=true
+system=false
+users=

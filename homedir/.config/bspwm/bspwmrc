@@ -61,12 +61,14 @@ bspc rule -a "SpeedCrunch" state=floating follow=on
 bspc rule -a "meteo-qt" state=floating follow=on
 bspc rule -a "qps" state=floating follow=on
 bspc rule -a "Orage" state=floating follow=on
+bspc rule -a "GoldenDict-ng" state=tiled follow=on
 bspc rule -a "qutebrowser" follow=on split_ratio=0.45
-bspc rule -a "firefox" desktop='^2' 
+bspc rule -a "firefox" desktop='^2' follow=on 
 bspc rule -a "Thunar" desktop='^3' follow=on
 bspc rule -a "RSS Guard" desktop='^4' follow=on
 bspc rule -a "FeatherNotes" desktop='^4' state=floating follow=on
 bspc rule -a "Soffice" desktop='^4' follow=on
+bspc rule -a "ONLYOFFICE" desktop='^4' follow=on
 bspc rule -a "code-oss" desktop='^4' follow=on
 bspc rule -a "Notesnook" desktop='^4' follow=on
 bspc rule -a "Gimp-3.0" desktop='^5' follow=on

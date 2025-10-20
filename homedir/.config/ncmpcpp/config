@@ -62,8 +62,8 @@ mpd_host = 192.168.2.136
 ## Note: If you're using Mopidy, an address of a udpsink gstreamer's output is
 ## also accepted. For example, the following section in mopidy.conf:
 ##
-## [audio]
-## output = tee name=t ! queue ! autoaudiosink t.
+##[audio]
+##   output = tee name=t ! queue ! autoaudiosink t.
 ##        ! queue ! audio/x-raw,rate=44100,channels=2,format=S16LE
 ##        ! udpsink host=localhost port=5555
 ##
@@ -71,7 +71,7 @@ mpd_host = 192.168.2.136
 ## visualizer.
 ##
 #
-#visualizer_data_source = /tmp/mpd.fifo
+##visualizer_data_source = /tmp/mpd.fifo
 #
 ##
 ## Note: Below parameter is needed for ncmpcpp to determine which output
@@ -79,19 +79,19 @@ mpd_host = 192.168.2.136
 ## to synchronize with audio.
 ##
 #
-#visualizer_output_name = Visualizer feed
+##visualizer_output_name = FIFO
 #
 ##
 ## If you set format to 44100:16:2, make it 'yes'.
 ##
-#visualizer_in_stereo = yes
+##visualizer_in_stereo = yes
 #
 ##
 ## Note: set below to >=10 only if you have synchronization issues with
 ## visualization and audio.
 ##
 #
-#visualizer_sync_interval = 0
+##visualizer_sync_interval = 0
 #
 ##
 ## Note: To enable spectrum frequency visualization you need to compile ncmpcpp
@@ -100,19 +100,19 @@ mpd_host = 192.168.2.136
 #
 ## Available values: spectrum, wave, wave_filled, ellipse.
 ##
-#visualizer_type = spectrum
+##visualizer_type = wave
 #
-#visualizer_fps = 60
+##visualizer_fps = 75
 #
 #visualizer_autoscale = no
 #
-#visualizer_look = ●▮
+##visualizer_look = ●▮
 #
 #visualizer_color = blue, cyan, green, yellow, magenta, red
 #
 ## Alternative subset of 256 colors for terminals that support it.
 ##
-#visualizer_color = 47, 83, 119, 155, 191, 227, 221, 215, 209, 203, 197, 161
+##visualizer_color = 47, 83, 119, 155, 191, 227, 221, 215, 209, 203, 197, 161
 #
 ##
 ## Note: The next few visualization options apply to the spectrum visualizer.
@@ -123,7 +123,7 @@ mpd_host = 192.168.2.136
 ## and visualizer_in_stereo set, artifacts may be visible on the bottom half of
 ## the visualization.
 #
-#visualizer_spectrum_smooth_look = yes
+##visualizer_spectrum_smooth_look = yes
 #
 ## Use unicode block characters from "symbols for legacy computing". This
 ## improves the smooth look on transparent terminals by using special unicode
@@ -137,22 +137,22 @@ mpd_host = 192.168.2.136
 ## visualizer look at a larger slice of time, which results in less jumpy
 ## visualizer output.
 #
-#visualizer_spectrum_dft_size = 2
+##visualizer_spectrum_dft_size = 2
 #
-#visualizer_spectrum_gain = 10
+##visualizer_spectrum_gain = 10
 #
 ## Left-most frequency of visualizer in Hz, must be less than HZ MAX
 #
-#visualizer_spectrum_hz_min = 20
+##visualizer_spectrum_hz_min = 20
 #
 ## Right-most frequency of visualizer in Hz, must be greater than HZ MIN
 #
-#visualizer_spectrum_hz_max = 20000
+##visualizer_spectrum_hz_max = 20000
 #
 ## Use log scaling for the frequency spectrum axes
 #
-#visualizer_spectrum_log_scale_x = yes
-#visualizer_spectrum_log_scale_y = yes
+##visualizer_spectrum_log_scale_x = yes
+##visualizer_spectrum_log_scale_y = yes
 #
 ##### system encoding #####
 ##
