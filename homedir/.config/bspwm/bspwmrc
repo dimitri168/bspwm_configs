@@ -8,8 +8,8 @@ pgrep -x dropbox > /dev/null || dropbox &
 pgrep -x tapper --layouter=xkb > /dev/null || tapper --layouter=xkb &
 # Screenshots
 pgrep -x flameshot > /dev/null || flameshot &
-# Weather
-pgrep -x meteo-qt > /dev/null || meteo-qt &
+## Weather
+#pgrep -x meteo-qt > /dev/null || meteo-qt &
 # Compositor
 pgrep -x picom > /dev/null || picom --daemon &
 # Clipboard Menu
@@ -71,12 +71,12 @@ bspc rule -a "Soffice" desktop='^4' follow=on
 bspc rule -a "ONLYOFFICE" desktop='^4' follow=on
 bspc rule -a "code-oss" desktop='^4' follow=on
 bspc rule -a "Notesnook" desktop='^4' follow=on
-bspc rule -a "Gimp-3.0" desktop='^5' follow=on
+bspc rule -a "Gimp" desktop='^5' follow=on
 bspc rule -a "strawberry" desktop='^5' follow=on
 bspc rule -a "Shotwell" desktop='^5' follow=on
 bspc rule -a "TelegramDesktop" desktop='^6' follow=on 
 
-XSECURELOCK_DIM_COLOR="#1a1b26" \
+XSECURELOCK_DIM_COLOR="$color2" \
 	XSECURELOCK_PASSWORD_PROMPT=emoticon \
 	XSECURELOCK_SHOW_HOSTNAME=0 \
 	XSECURELOCK_SHOW_USERNAME=0 \

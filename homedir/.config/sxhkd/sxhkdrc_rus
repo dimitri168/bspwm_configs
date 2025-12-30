@@ -65,7 +65,7 @@ Print
 	flameshot gui
 
 # История буфера обмена
-alt + c
+super + c
     CM_LAUNCHER=rofi clipmenu \
         -location 1 \
         -m -3 \
