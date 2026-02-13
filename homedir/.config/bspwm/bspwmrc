@@ -17,7 +17,7 @@ pgrep -x clipmenud > /dev/null || clipmenud &
 # Location agent
 /usr/lib/geoclue-2.0/demos/agent &
 # Console emulator start
-pgrep -x xfce4-terminal > /dev/null || xfce4-terminal -e 'fish -c "/usr/bin/fastfetch && fish"' &
+pgrep -x xfce4-terminal > /dev/null || xfce4-terminal -e 'fish -c "/usr/bin/fastfetch --logo arch_old && fish"' &
 
 numlockx on &
 xsetroot -cursor_name left_ptr &1
