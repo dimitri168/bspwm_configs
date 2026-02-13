@@ -16,11 +16,13 @@ pgrep -x picom > /dev/null || picom --daemon &
 pgrep -x clipmenud > /dev/null || clipmenud &
 # Location agent
 /usr/lib/geoclue-2.0/demos/agent &
+# Console emulator start
+pgrep -x xfce4-terminal > /dev/null || xfce4-terminal -e 'fish -c "/usr/bin/fastfetch && fish"' &
 
 numlockx on &
 xsetroot -cursor_name left_ptr &1
 
-localectl --no-convert set-x11-keymap us,ru pc105 "" grp:caps_toggle &
+localectl --no-convert set-x11-keymap us,ru pc105 dvorak grp:caps_toggle &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 

@@ -6,6 +6,10 @@
 super + less
 	~/scripts/kblist.sh
 
+# Смена алфавита набранного текста
+super + v
+	~/scripts/puntoswitch.sh
+
 # Терминал
 super + Return
 	xfce4-terminal
