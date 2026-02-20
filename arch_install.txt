@@ -142,11 +142,11 @@ pacman -S gnome-keyring
 
 
 # Разное
-yay -S ncdu arc-solid-gtk-theme papirus-icon-theme p7zip mc engrampa
-yay -S firefox-esr-bin openssh ttf-hack
+yay -S ncdu p7zip mc engrampa
+yay -S firefox-esr-bin firefox-esr-i18n-ru openssh ttf-hack
 yay -S dropbox
 yay -S pacman-contrib - всякие pactree, paccache (sudo systemctl enable paccache.timer для удаления кэша раз в неделю)
-
+yay -S picom
 
 # Делаем Swap
 fallocate -l 8G /swapfile
