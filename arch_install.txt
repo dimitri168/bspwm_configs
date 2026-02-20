@@ -1,4 +1,4 @@
-Network - WiFi
+# Network - WiFi
 iwctl
 station wlan0 connect linksys_media
 
@@ -7,26 +7,34 @@ mmcli -L 	# выдаст строку типа  /org/freedesktop/ModemManager1/M
 		# 6 - индекс модема, указываем в следующей команде
 mmcli -m 6 --simple-connect="apn=internet.beeline.kz"
 
-Русская консоль с переключением по CapsLock
+
+# Русская консоль с переключением по CapsLock
 loadkeys ruwin_cplk-UTF-8
 setfont cyr-sun16	# можно ter-u18b - русскоязычный жирный шрифт, или ter-u18n - для обычного начертания
 
-Проверка режима загрузки UEFI
+
+# Проверка режима загрузки UEFI
 ls /sys/firmware/efi/efivars	# вылезет куча всякого, значит загружено в UEFI
 cat /sys/firmware/efi/fw_platform_size	# покажет разрядность окружения EFI
 
-Local Mirror
+
+# Local Mirror
 Домашний сервак (сейчас не работает)
 Server = http://192.168.2.136:8080/$repo/os/$arch
 Казахстанские зеркала
 Server = https://mirror.ps.kz/archlinux/$repo/os/$arch
 Server = https://mirror.hoster.kz/archlinux/$repo/os/$arch	# плохо работает
 
+Еще можно запустить reflector - отранжировать по скорости и доступности зеркал с записью в mirrorlist
+reflector --country France,Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+В справке man есть примеры.
 
-Разметка диска
+
+# Разметка диска
 cfdisk /dev/sda
+Стандартно - 1Гб на EFI, остальное на root. Своп - файлом.
 
-Форматирование
+Форматирование и монтирование
 mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 
@@ -34,69 +42,87 @@ mkfs.fat -F32 /dev/sda1
 mkdir -p /mnt/boot/efi	# устарело, теперь монтируется в /boot - mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot/efi	# соответственно, mount /dev/sda1 /mnt/boot
 
-Swap потом в установленной системе делаем файлом
+Swap потом в установленной системе делаем файлом.
 
+
+# Загрузка базы и переход в систему.
 pacstrap /mnt base linux-zen linux-firmware intel-ucode
 pacstrap /mnt nano dhcpcd man-db man-pages texinfo networkmanager btop terminus-font ttf-terminus-nerd
 
+FSTAB с дисками по UUID
 genfstab -U /mnt >>/mnt/etc/fstab
 
 arch-chroot /mnt
 
-Локализация - 
-/etc/vconsole.conf - KEYMAP=ruwin_cplk-UTF-8 (переключение по капсу) FONT=cyr-sun16
-/etc/locale.conf - LANG=ru_RU.UTF-8
 
+# Локализация
+Файл /etc/vconsole.conf
+KEYMAP=ruwin_cplk-UTF-8 - (переключение по капсу)
+FONT=cyr-sun16
+
+Файл /etc/locale.conf
+LANG=ru_RU.UTF-8
+
+
+# Загрузчик
 Ставим grub2
 pacman -S grub2 efibootmgr
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
-или systemd-boot
+Или systemd-boot
 bootctl install
-nano /boot/loader/loader.conf
+Файл /boot/loader/loader.conf
 default  arch.conf
 timeout  4
-console-mode max
-nano /boot/loader/entries/arch.conf
+console-mode max - максимальное разрешение экрана. Также есть варианты 0, 1, auto, keep.
+Файл /boot/loader/entries/arch.conf
 title   Arch Linux
 linux   /vmlinuz-linux-zen
 initrd  /intel-ucode.img
 initrd  /initramfs-linux-zen.img
 options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
-перезагрузка
 
-Пользователи
+На этом этапе можно перезагрузить.
+
+
+# Пользователи# 
 pacman -S xdg-user-dirs
-useradd -m -g users -G wheel -s /bin/bash MYUSERNAME
+useradd -m -g users -G wheel,video -s /bin/bash MYUSERNAME
+Отредактировать /etc/sudoers - раскомментировать %wheel ALL=(ALL:ALL) ALL
 
-YAY
+# YAY
 pacman -S --needed git base-devel
 mkdir ~/git; cd git
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-XORG
-pacman -S xorg xorg-server xorg-apps mesa xf86-video-intel libva-intel-driver vulkan-intel
-pacman -S xf86-input-synaptics xorg-xinit xterm xorg-xclock
 
-Звук
-# Пульса
+# XORG
+pacman -S xorg xorg-server xorg-apps mesa libva-intel-driver vulkan-intel
+pacman -S xf86-input-synaptics xorg-xinit xterm xorg-xclock
+PS. libva-intel-driver - для старых встроек Intel. Для новых intel-media-driver
+
+
+# Звук
+Пульса
 pacman -S pulseaudio pulseaudio-bluetooth pavucontrol bluez blueman
 
-# Pipewire
+Pipewire
 pacman -S pipewire pipewire-alsa pipewire-bluetooth gst-plugin-pipewire
 Из под ПОЛЬЗОВАТЕЛЯ включаем сервисы
 systemctl --user enable pipewire.service
 systemctl --user enable pipewire-pulse.service
 
-XFCE4
+
+# XFCE4
 pacman -S xfce4 xfce4-goodies gvfs gvfs-smb network-manager-applet lightdm
 yay -S mugshot
 
-Lightdm (надо также прописать автозапуск через systemctl)
+
+# Lightdm (надо также прописать автозапуск через systemctl)
 /etc/lightdm/lightdm.conf
 
 [Seat:*]
@@ -105,20 +131,24 @@ autologin-user=username
 groupadd -r autologin
 gpasswd -a username autologin
 
-Codecs and player
-yay -S gstreamer gstreamer-vaapi gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly
+
+# Codecs and player
+yay -S gstreamer gstreamer-vaapi gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly
 yay -S mpv
 
-Политики
+
+# Политики
 pacman -S gnome-keyring
 
-Разное
+
+# Разное
 yay -S ncdu arc-solid-gtk-theme papirus-icon-theme p7zip mc engrampa
 yay -S firefox-esr-bin openssh ttf-hack
 yay -S dropbox
 yay -S pacman-contrib - всякие pactree, paccache (sudo systemctl enable paccache.timer для удаления кэша раз в неделю)
 
-Делаем Swap
+
+# Делаем Swap
 fallocate -l 8G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
@@ -127,12 +157,14 @@ swapon /swapfile
 Изменяем /etc/fstab
 /swapfile none swap defaults,discard 0 0
 
-Монтирование NTFS драйвером ядра (возможно какая-то хрень)
+
+# Монтирование NTFS драйвером ядра (возможно какая-то хрень)
 yay -S udisks2
 В качестве обходного пути добавьте следующую опцию в секции [defaults] в файле /etc/udisks2/mount_options.conf:
 ntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc
 
-Redshift
+
+# Redshift (гамма экрана в зависимости от времени)
 Вставить в /etc/geoclue/geoclue.conf
 
 url=https://location.services.mozilla.com/v1/geolocate?key=geoclue
