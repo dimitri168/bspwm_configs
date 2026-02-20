@@ -37,7 +37,7 @@ mount /dev/sda1 /mnt/boot/efi	# соответственно, mount /dev/sda1 /m
 Swap потом в установленной системе делаем файлом
 
 pacstrap /mnt base linux-zen linux-firmware intel-ucode
-pacstrap /mnt nano dhcpcd man-db man-pages texinfo networkmanager
+pacstrap /mnt nano dhcpcd man-db man-pages texinfo networkmanager btop terminus-font ttf-terminus-nerd
 
 genfstab -U /mnt >>/mnt/etc/fstab
 
@@ -51,6 +51,20 @@ arch-chroot /mnt
 pacman -S grub2 efibootmgr
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
+
+или systemd-boot
+bootctl install
+nano /boot/loader/loader.conf
+default  arch.conf
+timeout  4
+console-mode max
+nano /boot/loader/entries/arch.conf
+title   Arch Linux
+linux   /vmlinuz-linux-zen
+initrd  /intel-ucode.img
+initrd  /initramfs-linux-zen.img
+options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
+
 перезагрузка
 
 Пользователи
