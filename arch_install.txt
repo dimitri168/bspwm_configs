@@ -31,8 +31,8 @@ mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 
 mkfs.fat -F32 /dev/sda1
-mkdir -p /mnt/boot/efi	# устарело, теперь монтируется в /efi - mkdir /mnt/efi
-mount /dev/sda1 /mnt/boot/efi	# соответственно, mount /dev/sda1 /mnt/efi
+mkdir -p /mnt/boot/efi	# устарело, теперь монтируется в /boot - mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot/efi	# соответственно, mount /dev/sda1 /mnt/boot
 
 Swap потом в установленной системе делаем файлом
 
