@@ -9,17 +9,18 @@ mmcli -m 6 --simple-connect="apn=internet.beeline.kz"
 
 Русская консоль с переключением по CapsLock
 loadkeys ruwin_cplk-UTF-8
-setfont cyr-sun16
+setfont cyr-sun16	# можно ter-u18b - русскоязычный жирный шрифт, или ter-u18n - для обычного начертания
 
 Проверка режима загрузки UEFI
-ls /sys/firmware/efi/efivars
+ls /sys/firmware/efi/efivars	# вылезет куча всякого, значит загружено в UEFI
+cat /sys/firmware/efi/fw_platform_size	# покажет разрядность окружения EFI
 
 Local Mirror
 Домашний сервак (сейчас не работает)
 Server = http://192.168.2.136:8080/$repo/os/$arch
 Казахстанские зеркала
 Server = https://mirror.ps.kz/archlinux/$repo/os/$arch
-Server = https://mirror.hoster.kz/archlinux/$repo/os/$arch
+Server = https://mirror.hoster.kz/archlinux/$repo/os/$arch	# плохо работает
 
 
 Разметка диска
@@ -30,8 +31,8 @@ mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 
 mkfs.fat -F32 /dev/sda1
-mkdir -p /mnt/boot/efi
-mount /dev/sda1 /mnt/boot/efi
+mkdir -p /mnt/boot/efi	# устарело, теперь монтируется в /efi - mkdir /mnt/efi
+mount /dev/sda1 /mnt/boot/efi	# соответственно, mount /dev/sda1 /mnt/efi
 
 Swap потом в установленной системе делаем файлом
 
