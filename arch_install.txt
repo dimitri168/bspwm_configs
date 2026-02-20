@@ -83,11 +83,14 @@ pacman -S xorg xorg-server xorg-apps mesa xf86-video-intel libva-intel-driver vu
 pacman -S xf86-input-synaptics xorg-xinit xterm xorg-xclock
 
 Звук
-
+# Пульса
 pacman -S pulseaudio pulseaudio-bluetooth pavucontrol bluez blueman
 
-#pacman -S pipewire pipewire-pulse pipewire-alsa gst-plugin-pipewire
-#systemctl start --user pipewire-pulse.service
+# Pipewire
+pacman -S pipewire pipewire-alsa pipewire-bluetooth gst-plugin-pipewire
+Из под ПОЛЬЗОВАТЕЛЯ включаем сервисы
+systemctl --user enable pipewire.service
+systemctl --user enable pipewire-pulse.service
 
 XFCE4
 pacman -S xfce4 xfce4-goodies gvfs gvfs-smb network-manager-applet lightdm
