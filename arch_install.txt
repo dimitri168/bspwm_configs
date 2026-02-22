@@ -1,8 +1,9 @@
-# Network - WiFi
+# Network
+WiFi
 iwctl
 station wlan0 connect linksys_media
 
-Network - Cellular modem
+Cellular modem
 mmcli -L 	# выдаст строку типа  /org/freedesktop/ModemManager1/Modem/6 [Lenovo] N5321 gw
 		# 6 - индекс модема, указываем в следующей команде
 mmcli -m 6 --simple-connect="apn=internet.beeline.kz"
