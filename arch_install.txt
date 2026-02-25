@@ -88,7 +88,7 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 На этом этапе можно перезагрузить.
 
 
-# Пользователи# 
+# Пользователи
 pacman -S xdg-user-dirs
 useradd -m -g users -G wheel,video -s /bin/bash MYUSERNAME
 Отредактировать /etc/sudoers - раскомментировать %wheel ALL=(ALL:ALL) ALL
