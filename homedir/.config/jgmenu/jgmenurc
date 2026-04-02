@@ -49,7 +49,7 @@ font = Terminus Regular 14
 
 icon_size = 22
 # icon_text_spacing = 10
-icon_norm_alpha = 50
+icon_norm_alpha = 75
 icon_sel_alpha = 100
 # Icon theme should be systemwide i.e. placed into /usr/share/icons/
 icon_theme = Qogir-dark

@@ -52,6 +52,10 @@ XF86AudioRaiseVolume
 XF86AudioMute
 	pulsemixer --toggle-mute
 
+# MPD проигрывание/пауза
+XF86AudioPlay
+	mpc --host=e5450 toggle
+
 # Яркость выше
 super + Prior
 	~/.config/polybar/scripts/brightness.sh up
