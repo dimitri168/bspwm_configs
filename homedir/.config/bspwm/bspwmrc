@@ -16,10 +16,6 @@ pgrep -x picom > /dev/null || picom --daemon &
 pgrep -x clipmenud > /dev/null || clipmenud &
 # Location agent
 /usr/lib/geoclue-2.0/demos/agent &
-# Console emulator start
-#pgrep -x xfce4-terminal > /dev/null || xfce4-terminal -e 'fish -c "/usr/bin/fastfetch --logo arch_old && fish"' &
-pgrep -x xfce4-terminal > /dev/null || xfce4-terminal -e 'fish -c "/usr/bin/btop && fish"' &
-#pgrep -x xfce4-terminal > /dev/null || xfce4-terminal -e 'fish -c "/usr/bin/wtfutil && fish"' &
 
 numlockx on &
 xsetroot -cursor_name left_ptr &1
@@ -61,6 +57,8 @@ bspc config gapless_monocle       true
 bspc config focus_follows_pointer true
 
 bspc rule -a "mpv" state=floating follow=on
+bspc rule -a "zenity" state=floating follow=on
+bspc rule -a "yad" state=floating follow=on
 bspc rule -a "SpeedCrunch" state=floating follow=on
 bspc rule -a "meteo-qt" state=floating follow=on
 bspc rule -a "qps" state=floating follow=on
@@ -87,3 +85,5 @@ XSECURELOCK_DIM_COLOR="$color2" \
 	XSECURELOCK_FONT="Hack Nerd Font Mono" \
 	xss-lock -n /usr/lib/xsecurelock/saver_xscreensaver -l -- xsecurelock
 
+# Console emulator start
+pgrep -x alacritty > /dev/null || alacritty -e fish -c "/usr/bin/btop && fish"

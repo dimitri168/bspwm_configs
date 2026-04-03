@@ -48,7 +48,7 @@ Swap потом в установленной системе делаем фай
 
 # Загрузка базы и переход в систему.
 pacstrap /mnt base linux-zen linux-firmware intel-ucode
-pacstrap /mnt nano dhcpcd man-db man-pages texinfo networkmanager btop terminus-font ttf-terminus-nerd
+pacstrap /mnt nano dhcpcd man-db man-pages texinfo networkmanager terminus-font ttf-terminus-nerd sudo vi
 
 FSTAB с дисками по UUID
 genfstab -U /mnt >>/mnt/etc/fstab
@@ -63,6 +63,9 @@ FONT=cyr-sun16
 
 Файл /etc/locale.conf
 LANG=ru_RU.UTF-8
+
+Файл /etc/locale.gen - раскомментировать нужные локали и выполнить
+locale-gen
 
 
 # Загрузчик
@@ -84,14 +87,19 @@ initrd  /intel-ucode.img
 initrd  /initramfs-linux-zen.img
 options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
+Делаем пароль root
+passwd
 
 На этом этапе можно перезагрузить.
 
 
 # Пользователи
-pacman -S xdg-user-dirs
-useradd -m -g users -G wheel,video -s /bin/bash MYUSERNAME
+useradd -m -g users -G wheel,video -s /bin/bash MYUSERNAME ; passwd MYUSERNAME
 Отредактировать /etc/sudoers - раскомментировать %wheel ALL=(ALL:ALL) ALL
+
+pacman -S xdg-user-dirs
+xdg-user-dirs-update - прописывает в каталог пользователя стандартные директории
+
 
 # YAY
 pacman -S --needed git base-devel
@@ -104,19 +112,23 @@ makepkg -si
 # XORG
 pacman -S xorg xorg-server xorg-apps mesa libva-intel-driver vulkan-intel
 pacman -S xf86-input-synaptics xorg-xinit xterm xorg-xclock
-PS. libva-intel-driver - для старых встроек Intel. Для новых intel-media-driver
+
+PS. libva-intel-driver - для старых встроек Intel. Для процов новее 8-го поколения intel-media-driver
 
 
 # Звук
 Пульса
-pacman -S pulseaudio pulseaudio-bluetooth pavucontrol bluez blueman
+pacman -S pulseaudio pulseaudio-bluetooth pavucontrol
 
 Pipewire
-pacman -S pipewire pipewire-alsa pipewire-bluetooth gst-plugin-pipewire
+pacman -S pipewire pipewire-alsa gst-plugin-pipewire pipewire-pulse
 Из под ПОЛЬЗОВАТЕЛЯ включаем сервисы
 systemctl --user enable pipewire.service
 systemctl --user enable pipewire-pulse.service
 
+Bluetooth
+pacman -S bluez bluez-utils blueman
+systemctl enable bluetooth.service
 
 # XFCE4
 pacman -S xfce4 xfce4-goodies gvfs gvfs-smb network-manager-applet lightdm
@@ -139,15 +151,14 @@ yay -S mpv
 
 
 # Политики
-pacman -S gnome-keyring
+pacman -S gnome-keyring polkit-gnome seahorse
 
 
 # Разное
-yay -S ncdu p7zip mc engrampa
-yay -S firefox-esr-bin firefox-esr-i18n-ru openssh ttf-hack
+yay -S ncdu p7zip mc engrampa geany
+yay -S firefox firefox-i18n-ru openssh ttf-hack
 yay -S dropbox
 yay -S pacman-contrib - всякие pactree, paccache (sudo systemctl enable paccache.timer для удаления кэша раз в неделю)
-yay -S picom
 
 # Делаем Swap
 fallocate -l 8G /swapfile
@@ -174,3 +185,27 @@ url=https://location.services.mozilla.com/v1/geolocate?key=geoclue
 allowed=true
 system=false
 users=
+
+
+# Красота в терминале
+bat - цветная замена cat
+dfc - цветная замена df
+lsd - замена ls с цветами и иконками
+zoxide - умный переход по местам, ранее посещенным с помощью cd
+fish - замена для bash
+
+# Настройка fish
+Файл $HOME/.config/fish/config.fish
+
+if status is-interactive
+# Commands to run in interactive sessions can go here
+	set -g fish_greeting ""
+	alias ls='lsd'
+	alias cat='bat'
+	alias df='dfc'
+	zoxide init fish | source
+end
+
+
+# BSPWM
+yay -S bspwm sxhkd polybar dmenu dunst alacritty picom fastfetch btop tapper

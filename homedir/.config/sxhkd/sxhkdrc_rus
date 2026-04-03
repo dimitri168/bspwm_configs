@@ -12,7 +12,7 @@ super + v
 
 # Терминал
 super + Return
-	xfce4-terminal
+	alacritty
 
 # Диспетчер файлов
 super + e
