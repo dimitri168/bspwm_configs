@@ -51,15 +51,17 @@ pacstrap /mnt base linux-zen linux-firmware intel-ucode
 pacstrap /mnt nano dhcpcd man-db man-pages texinfo networkmanager terminus-font ttf-terminus-nerd sudo vi
 
 FSTAB с дисками по UUID
-genfstab -U /mnt >>/mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
 
+# Hostname - имя компьютера
+nano /etc/hostname
 
 # Локализация
 Файл /etc/vconsole.conf
-KEYMAP=ruwin_cplk-UTF-8 - (переключение по капсу)
-FONT=cyr-sun16
+KEYMAP=ruwin_cplk-UTF-8
+FONT=ter-u22b
 
 Файл /etc/locale.conf
 LANG=ru_RU.UTF-8
@@ -67,6 +69,8 @@ LANG=ru_RU.UTF-8
 Файл /etc/locale.gen - раскомментировать нужные локали и выполнить
 locale-gen
 
+# Дата
+timedatectl set-timezone Asia/Almaty
 
 # Загрузчик
 Ставим grub2
@@ -135,14 +139,16 @@ pacman -S xfce4 xfce4-goodies gvfs gvfs-smb network-manager-applet lightdm
 yay -S mugshot
 
 
-# Lightdm (надо также прописать автозапуск через systemctl)
+# Lightdm
+sudo systemctl enable lightdm
+Редактируем:
 /etc/lightdm/lightdm.conf
 
 [Seat:*]
-autologin-user=username
+autologin-user=USERNAME
 
 groupadd -r autologin
-gpasswd -a username autologin
+gpasswd -a USERNAME autologin
 
 
 # Codecs and player
@@ -208,4 +214,4 @@ end
 
 
 # BSPWM
-yay -S bspwm sxhkd polybar dmenu dunst alacritty picom fastfetch btop tapper
+yay -S bspwm sxhkd polybar dmenu dunst alacritty picom fastfetch btop tapper rofi

@@ -4,6 +4,7 @@ if status is-interactive
 	alias ls='lsd'
 	alias cat='bat'
 	alias df='dfc'
+	alias lsblk='lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT'
 	zoxide init fish | source
 end
 
