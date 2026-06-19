@@ -42,15 +42,18 @@ super + Escape
 
 # Понизить громкость
 XF86AudioLowerVolume
-	pulsemixer --change-volume -5
+	$HOME/.config/dunst/scripts/volume_show/volume.sh down
+#	pulsemixer --change-volume -5
 
 # Повысить громкость
 XF86AudioRaiseVolume
-	pulsemixer --change-volume +5
+	$HOME/.config/dunst/scripts/volume_show/volume.sh up
+#	pulsemixer --change-volume +5
 
 # Включить/выключить звук
 XF86AudioMute
-	pulsemixer --toggle-mute
+	$HOME/.config/dunst/scripts/volume_show/volume.sh mute
+#	pulsemixer --toggle-mute
 
 # MPD проигрывание/пауза
 XF86AudioPlay
