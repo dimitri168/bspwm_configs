@@ -167,14 +167,25 @@ yay -S dropbox
 yay -S pacman-contrib - всякие pactree, paccache (sudo systemctl enable paccache.timer для удаления кэша раз в неделю)
 
 # Делаем Swap
+## файлом
 fallocate -l 8G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-
 Изменяем /etc/fstab
 /swapfile none swap defaults,discard 0 0
 
+## с помощью zram-generator. По-умолчанию создается устройство размером в половину ОЗУ.
+sudo pacman -S zram-generator
+Вставить в /etc/systemd/zram-generator.conf
+[zram0]
+Остальные параметры гуглить.
+Выполнить
+systemctl daemon-reload
+и стартовать
+systemctl start systemd-zram-setup@zram0.service
+Проверка работоспособности
+swapon --show
 
 # Монтирование NTFS драйвером ядра (возможно какая-то хрень)
 yay -S udisks2
