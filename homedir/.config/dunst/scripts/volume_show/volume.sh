@@ -58,6 +58,7 @@ case $1 in
     # Lowers volume and displays the notification
     pactl set-sink-mute @DEFAULT_SINK@ 0
     pactl set-sink-volume @DEFAULT_SINK@ -$volume_step%
+#    pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $3, $5, $7}' >> ~/test
     show_volume_notif
     ;;
 

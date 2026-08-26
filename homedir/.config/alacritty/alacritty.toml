@@ -26,8 +26,10 @@ decorations = "Full"
 decorations_theme_variant = "Light" # "Dark"
 
 [font]
-normal.family = "0xProto Nerd Font Mono"
-size = 11
+#normal.family = "0xProto Nerd Font Propo"
+#normal.family = "DejaVu Nerd Font Mono"
+normal.family = "Liberation Mono"
+size = 12
 
 [cursor]
 style.shape = "Beam"
