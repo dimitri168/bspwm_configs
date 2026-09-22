@@ -44,7 +44,7 @@ menu_border = 2
 # sep_height = 5
 # sep_halign = left
 # sep_markup = 
-font = Terminus Regular 14
+font = Terminus Bold 14
 # font_fallback = xtg
 
 icon_size = 22
