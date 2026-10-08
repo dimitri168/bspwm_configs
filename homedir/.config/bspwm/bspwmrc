@@ -57,7 +57,7 @@ bspc config gapless_monocle       true
 bspc config focus_follows_pointer true
 
 bspc rule -a "mpv" state=floating follow=on
-bspc rule -a "zenity" state=floating follow=on
+bspc rule -a "zenity" state=floating follow=on	#Floating window for checksum calc
 bspc rule -a "yad" state=floating follow=on
 bspc rule -a "SpeedCrunch" state=floating follow=on
 bspc rule -a "meteo-qt" state=floating follow=on
