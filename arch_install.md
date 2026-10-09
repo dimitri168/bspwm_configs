@@ -121,7 +121,7 @@ Server = [https://mirror.hoster.kz/archlinux/$repo/os/$arch]()	# плохо ра
 
 Swap потом в установленной системе делаем файлом.
 
-### Загрузка базы и переход в систему.
+### Загрузка базы и переход в систему с помощью arch-chroot.
 
 `pacstrap /mnt base linux-zen linux-firmware intel-ucode`
 
