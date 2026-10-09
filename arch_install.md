@@ -46,7 +46,6 @@
     - [Видеокодеки](#видеокодеки)
     - [MPV](#mpv)
 
-
 ## Live-сессия
 
 ### Сеть в live-сессии
@@ -232,9 +231,11 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 `xdg-user-dirs-update` - прописывает в каталог пользователя стандартные директории. Внимание, если локаль русская, то и названия будут русские.
 
+Дальше заходим пользователем.
+
 ### YAY
 
-`pacman -S --needed git base-devel`
+`sudo pacman -S --needed git base-devel`
 
 `mkdir ~/git; cd git`
 
@@ -246,19 +247,25 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 ### XORG
 
-`pacman -S xorg xorg-server xorg-apps mesa libva-intel-driver vulkan-intel`
+`pacman -S xorg xorg-server xorg-apps mesa vulkan-intel`
 
 `pacman -S xf86-input-synaptics xorg-xinit xterm xorg-xclock`
+
+Проверяем работоспособность:
+
+`startx`
+
+Выход из xorg-сессии - CTRL+d в самом большом окне `xterm`.
 
 ### Звук
 
 #### PulseAudio
 
-`pacman -S pulseaudio pulseaudio-bluetooth pavucontrol`
+`yay -S pulseaudio pulseaudio-bluetooth pavucontrol`
 
 #### или Pipewire
 
-`pacman -S pipewire pipewire-alsa gst-plugin-pipewire pipewire-pulse`
+`yay -S pipewire pipewire-alsa gst-plugin-pipewire pipewire-pulse`
 
 Из сессии **ПОЛЬЗОВАТЕЛЯ** включаем сервисы
 
@@ -268,13 +275,13 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 #### Bluetooth
 
-`pacman -S bluez bluez-utils blueman`
+`yay -S bluez bluez-utils blueman`
 
-`systemctl enable bluetooth.service`
+`sudo systemctl enable bluetooth.service`
 
 ### Политики
 
-`pacman -S gnome-keyring polkit-gnome seahorse`
+`yay -S gnome-keyring polkit-gnome seahorse`
 
 ### Разное
 
@@ -292,25 +299,23 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 #### Файлом
 
-`fallocate -l 8G /swapfile`
+`sudo fallocate -l 8G /swapfile`
 
-`chmod 600 /swapfile`
+`sudo chmod 600 /swapfile`
 
-`mkswap /swapfile`
+`sudo mkswap /swapfile`
 
-`swapon /swapfile`
+`sudo swapon /swapfile`
 
 Изменяем <mark>/etc/fstab</mark>
 
 ```
-
 /swapfile    none    swap    defaults,discard    0    0
-
 ```
 
 #### или с помощью zram-generator. По-умолчанию создается устройство размером в половину ОЗУ.
 
-`pacman -S zram-generator`
+`yay -S zram-generator`
 
 Вставить в <mark>/etc/systemd/zram-generator.conf</mark>
 
@@ -321,11 +326,11 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 Выполнить
 
-`systemctl daemon-reload`
+`sudo systemctl daemon-reload`
 
 и стартовать
 
-`systemctl start systemd-zram-setup@zram0.service`
+`sudo systemctl start systemd-zram-setup@zram0.service`
 
 Проверка работоспособности
 
@@ -397,9 +402,9 @@ end
 autologin-user=USERNAME
 ```
 
-`groupadd -r autologin`
+`sudo groupadd -r autologin`
 
-`gpasswd -a USERNAME autologin`
+`sudo gpasswd -a USERNAME autologin`
 
 `sudo systemctl enable lightdm`
 
