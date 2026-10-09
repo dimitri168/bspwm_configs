@@ -52,8 +52,8 @@ get_duration() {
 
 }
 
-KEY="a022c506104a29a19e8247c70fd2e835"
-CITY="Burunday"
+KEY=""
+CITY=""
 UNITS="metric"
 SYMBOL="°"
 
