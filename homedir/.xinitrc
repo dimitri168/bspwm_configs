@@ -10,12 +10,7 @@
 # Set 75Hz screen refresh rate
 $HOME/.screenlayout/screen.sh &
 
-#$HOME/scripts/nfs_mounts.sh &
-
 # Restore color gamma and wallpaper from previous login
 wal -R
-
-#nm-applet &
-
 
 exec bspwm

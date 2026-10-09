@@ -1,4 +1,5 @@
 #!/bin/bash
+# Simple script to get some SMART parameters of hard drives
 
 for i in {a,b,c,d}; do
 	echo ''

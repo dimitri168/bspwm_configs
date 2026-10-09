@@ -1,5 +1,5 @@
 #!/bin/sh
-# Weather by IP
+# Weather by IP from wttr.in
 
 City=NULL;
 Temp=NULL;
