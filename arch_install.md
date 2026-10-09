@@ -1,62 +1,63 @@
-# Краткое руководство по установке Arch Linux, Xorg, BSPWM и немного XFCE
+**Краткое руководство по установке Arch Linux, Xorg, BSPWM и немного XFCE**
 
-> Почти всё выполняется от пользователя `root`. Команда `yay`, а также редактирование файлов в каталоге пользователя всегда выполняются от пользователя.
+Почти всё выполняется от пользователя `root`. Команда `yay`, а также редактирование файлов в каталоге пользователя всегда выполняются от пользователя.
 
 Скачиваем свежий образ с официального сайта, записываем на флешку с `ventoy`, или каким-либо другим способом, и поехали...
 
-- [Краткое руководство по установке Arch Linux, Xorg, BSPWM и немного XFCE](#краткое-руководство-по-установке-arch-linux-xorg-bspwm-и-немного-xfce)
-  - [Live-сессия](#live-сессия)
-    - [Сеть в live-сессии](#сеть-в-live-сессии)
-      - [iwctl](#iwctl)
-      - [Cellular modem](#cellular-modem)
-    - [Русская консоль с переключением по CapsLock в live-режиме](#русская-консоль-с-переключением-по-capslock-в-live-режиме)
-    - [Проверка режима загрузки UEFI](#проверка-режима-загрузки-uefi)
-    - [Зеркала](#зеркала)
-    - [Разметка диска](#разметка-диска)
-    - [Загрузка базы и переход в систему с помощью `arch-chroot`. Ядро ставим `linux-zen`.](#загрузка-базы-и-переход-в-систему-с-помощью-arch-chroot-ядро-ставим-linux-zen)
-    - [Hostname - имя компьютера](#hostname---имя-компьютера)
-    - [Локализация](#локализация)
-    - [Дата](#дата)
-    - [Загрузчик](#загрузчик)
-      - [Ставим grub2](#ставим-grub2)
-      - [Или systemd-boot](#или-systemd-boot)
-    - [Сеть для установленной системы](#сеть-для-установленной-системы)
-    - [Завершение установки](#завершение-установки)
-  - [Настройки в установленной системе](#настройки-в-установленной-системе)
-    - [Сеть](#сеть)
-    - [Пользователи](#пользователи)
-    - [YAY](#yay)
-    - [XORG](#xorg)
-    - [Звук](#звук)
-      - [PulseAudio](#pulseaudio)
-      - [или Pipewire](#или-pipewire)
-      - [Bluetooth](#bluetooth)
-    - [Политики](#политики)
-    - [Разное](#разное)
-    - [Делаем Swap](#делаем-swap)
-      - [Файлом](#файлом)
-      - [или с помощью zram-generator. По-умолчанию создается устройство размером в половину ОЗУ.](#или-с-помощью-zram-generator-по-умолчанию-создается-устройство-размером-в-половину-озу)
-    - [Монтирование NTFS драйвером ядра (возможно какая-то хрень)](#монтирование-ntfs-драйвером-ядра-возможно-какая-то-хрень)
-    - [Redshift (гамма экрана в зависимости от времени)](#redshift-гамма-экрана-в-зависимости-от-времени)
-    - [Красота в терминале](#красота-в-терминале)
-    - [Настройка fish](#настройка-fish)
-    - [BSPWM](#bspwm)
-    - [XFCE4](#xfce4)
-    - [Lightdm autologin](#lightdm-autologin)
-    - [Видеокодеки](#видеокодеки)
-    - [MPV](#mpv)
+- [Live-сессия](#live-сессия)
+  - [Сеть в live-сессии](#сеть-в-live-сессии)
+    - [iwctl](#iwctl)
+    - [Cellular modem](#cellular-modem)
+  - [Русская консоль с переключением по CapsLock в live-режиме](#русская-консоль-с-переключением-по-capslock-в-live-режиме)
+  - [Проверка режима загрузки UEFI](#проверка-режима-загрузки-uefi)
+  - [Зеркала](#зеркала)
+  - [Разметка диска](#разметка-диска)
+  - [Загрузка базы и переход в систему с помощью `arch-chroot`. Ядро ставим `linux-zen`.](#загрузка-базы-и-переход-в-систему-с-помощью-arch-chroot-ядро-ставим-linux-zen)
+  - [Hostname - имя компьютера](#hostname---имя-компьютера)
+  - [Локализация](#локализация)
+  - [Дата](#дата)
+  - [Загрузчик](#загрузчик)
+    - [Ставим grub2](#ставим-grub2)
+    - [Или systemd-boot](#или-systemd-boot)
+  - [Сеть для установленной системы](#сеть-для-установленной-системы)
+  - [Завершение установки](#завершение-установки)
+- [Настройки в установленной системе](#настройки-в-установленной-системе)
+  - [Сеть](#сеть)
+  - [Пользователи](#пользователи)
+  - [YAY](#yay)
+  - [XORG](#xorg)
+  - [Звук](#звук)
+    - [PulseAudio](#pulseaudio)
+    - [или Pipewire](#или-pipewire)
+    - [Bluetooth](#bluetooth)
+  - [Политики](#политики)
+  - [Разное](#разное)
+  - [Делаем Swap](#делаем-swap)
+    - [Файлом](#файлом)
+    - [или с помощью zram-generator. По-умолчанию создается устройство размером в половину ОЗУ.](#или-с-помощью-zram-generator-по-умолчанию-создается-устройство-размером-в-половину-озу)
+  - [Монтирование NTFS драйвером ядра (возможно какая-то хрень)](#монтирование-ntfs-драйвером-ядра-возможно-какая-то-хрень)
+  - [Redshift (гамма экрана в зависимости от времени)](#redshift-гамма-экрана-в-зависимости-от-времени)
+    - [Использование Geoclue2](#использование-geoclue2)
+    - [Ручной режим](#ручной-режим)
+  - [Красота в терминале](#красота-в-терминале)
+  - [Настройка fish](#настройка-fish)
+  - [BSPWM](#bspwm)
+  - [XFCE4](#xfce4)
+  - [Lightdm autologin](#lightdm-autologin)
+  - [Видеокодеки](#видеокодеки)
+  - [MPV](#mpv)
 
-## Live-сессия
+# Live-сессия
 
-### Сеть в live-сессии
+## Сеть в live-сессии
 
-#### iwctl
+### iwctl
 
 `iwctl`
 
 `station wlan0 connect ваш_ssid`
 
-#### Cellular modem
+### Cellular modem
 
 `mmcli -L` 
 
@@ -66,7 +67,7 @@
 
 `mmcli -m 6 --simple-connect="apn=internet.beeline.kz"`
 
-### Русская консоль с переключением по CapsLock в live-режиме
+## Русская консоль с переключением по CapsLock в live-режиме
 
 `loadkeys ruwin_cplk-UTF-8`
 
@@ -74,7 +75,7 @@
 
 можно `ter-u18b` - русскоязычный жирный шрифт, или `ter-u18n` - для обычного начертания. Размер подбираем по разрешению экрана.
 
-### Проверка режима загрузки UEFI
+## Проверка режима загрузки UEFI
 
 `ls /sys/firmware/efi/efivars`
 
@@ -84,7 +85,7 @@
 
 покажет разрядность окружения EFI.
 
-### Зеркала
+## Зеркала
 
 Работаем с <mark>/etc/pacman.d/mirrorlist</mark>
 
@@ -100,7 +101,7 @@ Server = [https://mirror.hoster.kz/archlinux/$repo/os/$arch]()	# плохо ра
 
 В справке `man reflector` есть примеры.
 
-### Разметка диска
+## Разметка диска
 
 `cfdisk /dev/sda`
 
@@ -120,7 +121,7 @@ Server = [https://mirror.hoster.kz/archlinux/$repo/os/$arch]()	# плохо ра
 
 Swap потом в установленной системе делаем файлом.
 
-### Загрузка базы и переход в систему с помощью `arch-chroot`. Ядро ставим `linux-zen`.
+## Загрузка базы и переход в систему с помощью `arch-chroot`. Ядро ставим `linux-zen`.
 
 `pacstrap /mnt base linux-zen linux-firmware intel-ucode`
 
@@ -132,11 +133,11 @@ Swap потом в установленной системе делаем фай
 
 `arch-chroot /mnt`
 
-### Hostname - имя компьютера
+## Hostname - имя компьютера
 
 `nano /etc/hostname` - придумать имя компьютеру.
 
-### Локализация
+## Локализация
 
 Файл <mark>/etc/vconsole.conf</mark>.  Переключение раскладки клавишей CapsLock
 
@@ -155,13 +156,13 @@ LANG=ru_RU.UTF-8
 
 `locale-gen`
 
-### Дата
+## Дата
 
 `timedatectl set-timezone Asia/Almaty`
 
-### Загрузчик
+## Загрузчик
 
-#### Ставим grub2
+### Ставим grub2
 
 `pacman -S grub2 efibootmgr`
 
@@ -169,7 +170,7 @@ LANG=ru_RU.UTF-8
 
 `grub-mkconfig -o /boot/grub/grub.cfg`
 
-#### Или systemd-boot
+### Или systemd-boot
 
 `bootctl install`
 
@@ -201,11 +202,11 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 `passwd`
 
-### Сеть для установленной системы
+## Сеть для установленной системы
 
 `systemctl enable NetworkManager.service`
 
-### Завершение установки
+## Завершение установки
 
 `exit` - выходим из `chroot`
 
@@ -213,13 +214,13 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 `poweroff` - выключаем.
 
-## Настройки в установленной системе
+# Настройки в установленной системе
 
-### Сеть
+## Сеть
 
 `nmtui`
 
-### Пользователи
+## Пользователи
 
 `useradd -m -g users -G wheel,video -s /bin/bash MYUSERNAME`
 
@@ -233,7 +234,7 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 Дальше заходим пользователем.
 
-### YAY
+## YAY
 
 `sudo pacman -S --needed git base-devel`
 
@@ -245,7 +246,7 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 `makepkg -si`
 
-### XORG
+## XORG
 
 `pacman -S xorg xorg-server xorg-apps mesa vulkan-intel`
 
@@ -257,13 +258,13 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 Выход из xorg-сессии - CTRL+d в самом большом окне `xterm`.
 
-### Звук
+## Звук
 
-#### PulseAudio
+### PulseAudio
 
 `yay -S pulseaudio pulseaudio-bluetooth pavucontrol`
 
-#### или Pipewire
+### или Pipewire
 
 `yay -S pipewire pipewire-alsa gst-plugin-pipewire pipewire-pulse`
 
@@ -273,17 +274,17 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 `systemctl --user enable pipewire-pulse.service`
 
-#### Bluetooth
+### Bluetooth
 
 `yay -S bluez bluez-utils blueman`
 
 `sudo systemctl enable bluetooth.service`
 
-### Политики
+## Политики
 
 `yay -S gnome-keyring polkit-gnome seahorse`
 
-### Разное
+## Разное
 
 `yay -S ncdu p7zip mc engrampa geany`
 
@@ -295,9 +296,9 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 `sudo systemctl enable paccache.timer` - для удаления кэша раз в неделю
 
-### Делаем Swap
+## Делаем Swap
 
-#### Файлом
+### Файлом
 
 `sudo fallocate -l 8G /swapfile`
 
@@ -313,7 +314,7 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 /swapfile    none    swap    defaults,discard    0    0
 ```
 
-#### или с помощью zram-generator. По-умолчанию создается устройство размером в половину ОЗУ.
+### или с помощью zram-generator. По-умолчанию создается устройство размером в половину ОЗУ.
 
 `yay -S zram-generator`
 
@@ -336,7 +337,7 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 `swapon --show`
 
-### Монтирование NTFS драйвером ядра (возможно какая-то хрень)
+## Монтирование NTFS драйвером ядра (возможно какая-то хрень)
 
 `yay -S udisks2`
 
@@ -344,19 +345,42 @@ options root=UUID=12dad10e-2218-4796-ad89-2337030b4379 rw
 
 `ntfs_defaults=uid=$UID,gid=$GID,noatime,prealloc`
 
-### Redshift (гамма экрана в зависимости от времени)
+## Redshift (гамма экрана в зависимости от времени)
+
+### Использование Geoclue2
+
+`yay -S geoclue`
 
 Вставить в <mark>/etc/geoclue/geoclue.conf</mark>
 
 ```
-url=https://location.services.mozilla.com/v1/geolocate?key=geoclue
 [redshift]
 allowed=true
 system=false
 users=
 ```
 
-### Красота в терминале
+`sudo systemctl start geoclue.service`
+
+Отредактировать <mark>~/.config/redshift/redshift.conf</mark>
+
+```
+location-provider=geoclue2
+```
+
+### Ручной режим
+
+Отредактировать <mark>~/.config/redshift/redshift.conf</mark>
+
+```
+location-provider=manual
+
+[manual]
+lat=43.25
+lon=76.93
+```
+
+## Красота в терминале
 
 `bat` - цветная замена cat
 
@@ -368,7 +392,7 @@ users=
 
 `fish` - замена для `bash`
 
-### Настройка fish
+## Настройка fish
 
 Файл <mark>~/.config/fish/config.fish</mark>
 
@@ -383,17 +407,17 @@ if status is-interactive
 end
 ```
 
-### BSPWM
+## BSPWM
 
 `yay -S bspwm sxhkd polybar dmenu dunst alacritty picom fastfetch btop tapper rofi`
 
-### XFCE4
+## XFCE4
 
 `yay -S xfce4 xfce4-goodies gvfs gvfs-smb network-manager-applet lightdm`
 
 `yay -S mugshot`
 
-### Lightdm autologin
+## Lightdm autologin
 
 Редактируем <mark>/etc/lightdm/lightdm.conf</mark>
 
@@ -408,7 +432,7 @@ autologin-user=USERNAME
 
 `sudo systemctl enable lightdm`
 
-### Видеокодеки
+## Видеокодеки
 
 `yay -S gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly`
 
@@ -420,7 +444,7 @@ autologin-user=USERNAME
 
 `yay -S intel-media-driver`
 
-### MPV
+## MPV
 
 `yay -S mpv`
 

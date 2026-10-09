@@ -30,3 +30,5 @@ Common packages are in use:
 - and some others...
 
 Arch Linux installation quick guide written in Russian. Default sxhkd config translated to Russian too.
+
+Thanks to @adi1090x for Powermenu configs.
